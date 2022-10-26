@@ -24,5 +24,5 @@ public class Shooter extends SubsystemBase {
 
   Shooter motor_1 = new Shooter(); //create the object
   Shooter motor_2 = new Shooter(); //create 2nd object
-
+  motor_2 = motor_2.setInverted(true); //invert the motor
 }
