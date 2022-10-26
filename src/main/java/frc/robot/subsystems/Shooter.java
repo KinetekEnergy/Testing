@@ -22,7 +22,10 @@ public class Shooter extends SubsystemBase {
     // This method will be called once per scheduler run during simulation
   }
 
-  Shooter motor_1 = new Shooter(); //create the object
-  Shooter motor_2 = new Shooter(); //create 2nd object
+  // Shooter motor_1 = new Shooter(); //create the object
+  // Shooter motor_2 = new Shooter(); //create 2nd object
+
+  WPI_TalonFX _talonL = new WPI_TalonFX(1);
+  WPI_TalonFX _talonR = new WPI_TalonFX(0);
   motor_2 = motor_2.setInverted(true); //invert the motor
 }
