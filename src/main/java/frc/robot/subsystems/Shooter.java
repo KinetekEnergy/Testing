@@ -4,25 +4,24 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  public Shooter() {}
+  WPI_TalonFX right_motor = new WPI_TalonFX(Constants.right_shooter_motor); // right
+  WPI_TalonFX left_motor = new WPI_TalonFX(Constants.left_shooter_motor); // left
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
+  public Shooter() {
+    left_motor.setInverted(true);
+    right_motor.setInverted(false);
   }
 
-  @Override
-  public void simulationPeriodic() {
-    // This method will be called once per scheduler run during simulation
+  private MotorControllerGroup shooter = new MotorControllerGroup(left_motor, right_motor);
+
+  public void set_speed(double speed) {
+    shooter.set(speed);
   }
-
-  Shooter motor_1 = new Shooter(); //create the object
-  Shooter motor_2 = new Shooter(); //create 2nd object
-
 }
