@@ -36,8 +36,7 @@ public class UpperShoot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Shooter.set_speed(1);
-    ;
+    Shooter.set_speed(0.5); //set the speed of the motor
   }
 
   // Called once the command ends or is interrupted.

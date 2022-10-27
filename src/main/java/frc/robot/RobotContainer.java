@@ -30,7 +30,7 @@ public class RobotContainer {
   // private final DriveTrain m_DriveTrain = new DriveTrain();
   private final Shooter m_Shooter = new Shooter();
 
-  private final UpperShoot m_upper_shoot = new UpperShoot(m_Shooter);
+  private final UpperShoot m_upper_shoot = new UpperShoot(m_Shooter); //thingy to activate the shoot
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
