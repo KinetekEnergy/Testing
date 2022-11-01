@@ -13,41 +13,41 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
 public class UpperShoot extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" }) //suppress useless warnings
-  private final Shooter Shooter;
+    @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" }) // suppress useless warnings
+    private final Shooter Shooter;
 
-  /**
-   * Creates a new UpperShoot.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
-  public UpperShoot(Shooter subsystem) { //method called uppershoot
-    Shooter = subsystem;
-    // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
-  }
+    /**
+     * Creates a new UpperShoot.
+     *
+     * @param subsystem The subsystem used by this command.
+     */
+    public UpperShoot(Shooter subsystem) { // method called uppershoot
+        Shooter = subsystem;
+        // Use addRequirements() here to declare subsystem dependencies.
+        addRequirements(subsystem);
+    }
 
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {
+    // Called when the command is initially scheduled.
+    @Override
+    public void initialize() {
 
-  }
+    }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
-    Shooter.set_speed(0.5); //set the speed of the motor
-  }
+    // Called every time the scheduler runs while the command is scheduled.
+    @Override
+    public void execute() {
+        Shooter.set_speed(0.5); // set the speed of the motor
+    }
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-  }
+    // Called once the command ends or is interrupted.
+    @Override
+    public void end(boolean interrupted) {
+    }
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    // Shooter.set_speed(0);
-    return false;
-  }
+    // Returns true when the command should end.
+    @Override
+    public boolean isFinished() {
+        // Shooter.set_speed(0);
+        return false;
+    }
 }

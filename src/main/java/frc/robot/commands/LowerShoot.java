@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
 public class LowerShoot extends CommandBase {
-    @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" }) //suppress useless error
-    private final Shooter Shooter; 
+    @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" }) // suppress useless error
+    private final Shooter Shooter;
 
     /**
      * Creates a new LowerShoot.
