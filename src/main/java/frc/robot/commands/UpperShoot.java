@@ -4,16 +4,16 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.ExampleSubsystem;
+//import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Shooter;
 //import edu.wpi.first.wpilibj.PS4Controller.Button;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
-import frc.robot.Constants;
+//import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+//import frc.robot.Constants;
 
 /** An example command that uses an example subsystem. */
 public class UpperShoot extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" }) //suppress useless warnings
   private final Shooter Shooter;
 
   /**
@@ -21,7 +21,7 @@ public class UpperShoot extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public UpperShoot(Shooter subsystem) {
+  public UpperShoot(Shooter subsystem) { //method called uppershoot
     Shooter = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);

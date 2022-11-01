@@ -54,6 +54,8 @@ public class RobotContainer {
     JoystickButton A = new JoystickButton(controller, Button.kA.value); //button map
 
     A.whenPressed(m_upper_shoot); //when A is pressed run the command
+    //note: whenPressed() will make the motor start and nothing will stop it unless you manually kill the program
+    //use whenHeld() to make the button only activate the motor when it's pressed (HELD down)
   }
 
   /**
