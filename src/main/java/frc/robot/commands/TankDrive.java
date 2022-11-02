@@ -12,9 +12,11 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 /** An example command that uses an example subsystem. */
 public class TankDrive extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-    private final Drivetrain m_drivetrain;
-    private DoubleSupplier left;
-    private DoubleSupplier right;
+    private final Drivetrain drivetrain;
+    private DoubleSupplier leftMotor;
+    private DoubleSupplier rightMotor;
+
+    // no more m_drivetrain
 
     /**
      * Creates a new TankDrive.
@@ -22,9 +24,9 @@ public class TankDrive extends CommandBase {
      * @param subsystem The subsystem used by this command.
      */
     public TankDrive(Drivetrain drivetrain, DoubleSupplier left, DoubleSupplier right) {
-        this.m_drivetrain = drivetrain;
-        this.left = left;
-        this.right = right;
+        this.drivetrain = drivetrain;
+        this.leftMotor = left;
+        this.rightMotor = right;
         addRequirements(drivetrain);
     }
     // Called when the command is initially scheduled.
@@ -35,7 +37,7 @@ public class TankDrive extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        m_drivetrain.tankdrive(left.getAsDouble(), right.getAsDouble());
+        drivetrain.tankdrive(leftMotor.getAsDouble(), rightMotor.getAsDouble());
     }
 
     // Called once the command ends or is interrupted.

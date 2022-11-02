@@ -13,27 +13,31 @@ import frc.robot.Constants;
 
 public class Drivetrain extends SubsystemBase {
     // front motors
-    WPI_TalonFX Right_front = new WPI_TalonFX(Constants.Right_front); // right
-    WPI_TalonFX Left_front = new WPI_TalonFX(Constants.Left_front); // left
+    WPI_TalonFX rightFront = new WPI_TalonFX(Constants.Right_front); // right
+    WPI_TalonFX leftFront = new WPI_TalonFX(Constants.Left_front); // left
 
     // back motors
     WPI_TalonFX Right_rear = new WPI_TalonFX(Constants.Right_rear); // right
     WPI_TalonFX Left_rear = new WPI_TalonFX(Constants.Left_rear); // left
 
+    // use motor controllers for inversions in constructor
+
+    // proper naming conventions
+
     /** Creates a new Drivetrain. */
     public Drivetrain() { // motor inversion
         // invert the motors so you don't brokey the robot
-        Right_front.setInverted(true);
+        rightFront.setInverted(true);
         Right_rear.setInverted(true);
 
-        Left_front.setInverted(false);
+        leftFront.setInverted(false);
         Left_rear.setInverted(false);
 
         //sets to coast mode so that it doesn't stop abruptly
-        Right_front.setNeutralMode(NeutralMode.Coast);
+        rightFront.setNeutralMode(NeutralMode.Coast);
         Right_rear.setNeutralMode(NeutralMode.Coast);
 
-        Left_front.setNeutralMode(NeutralMode.Coast);
+        leftFront.setNeutralMode(NeutralMode.Coast);
         Left_rear.setNeutralMode(NeutralMode.Coast);
     }
 
@@ -41,8 +45,8 @@ public class Drivetrain extends SubsystemBase {
     //example: turning
     //you'd need to make one group go faster than the other
     //--> that can be done with two groups that can you can vary the speed with
-    private MotorControllerGroup right = new MotorControllerGroup(Right_front, Right_rear);
-    private MotorControllerGroup left = new MotorControllerGroup(Left_front, Left_rear);
+    private MotorControllerGroup right = new MotorControllerGroup(rightFront, Right_rear);
+    private MotorControllerGroup left = new MotorControllerGroup(leftFront, Left_rear);
 
     //set the speeds for both the controller groups
     public void tankdrive(double right_speed, double left_speed) {
