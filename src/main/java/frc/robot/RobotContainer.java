@@ -7,13 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 //import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.XboxController.Button;
-//import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.UpperShoot;
-//import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.TankDrive;
+import frc.robot.subsystems.Drivetrain;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -28,10 +24,8 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   //private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   // private final DriveTrain m_DriveTrain = new DriveTrain();
-  private final Shooter m_Shooter = new Shooter();
-
-  private final UpperShoot m_upper_shoot = new UpperShoot(m_Shooter); //thingy to activate the shoot
-
+  private final Drivetrain m_drivetrain = new Drivetrain();
+  
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -49,13 +43,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    XboxController controller = new XboxController(0); //create the controller w/the port
+    XboxController pilot = new XboxController(0); //create the controller w/the port
 
-    JoystickButton A = new JoystickButton(controller, Button.kA.value); //button map
-
-    A.whenPressed(m_upper_shoot); //when A is pressed run the command
-    //note: whenPressed() will make the motor start and nothing will stop it unless you manually kill the program
-    //use whenHeld() to make the button only activate the motor when it's pressed (HELD down)
+    //lambda 
+    m_drivetrain.setDefaultCommand(new TankDrive(m_drivetrain, pilot::getLeftY, pilot::getRightY));
   }
 
   /**
@@ -65,6 +56,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_upper_shoot;
+    return null;
   }
 }

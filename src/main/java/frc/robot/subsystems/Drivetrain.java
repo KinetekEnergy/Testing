@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
@@ -26,7 +27,14 @@ public class Drivetrain extends SubsystemBase {
         Right_rear.setInverted(true);
 
         Left_front.setInverted(false);
-        Left_front.setInverted(false);
+        Left_rear.setInverted(false);
+
+        //sets to coast mode so that it doesn't stop abruptly
+        Right_front.setNeutralMode(NeutralMode.Coast);
+        Right_rear.setNeutralMode(NeutralMode.Coast);
+
+        Left_front.setNeutralMode(NeutralMode.Coast);
+        Left_rear.setNeutralMode(NeutralMode.Coast);
     }
 
     //use two groups so that you can vary the speeds between both of them
@@ -37,7 +45,7 @@ public class Drivetrain extends SubsystemBase {
     private MotorControllerGroup left = new MotorControllerGroup(Left_front, Left_rear);
 
     //set the speeds for both the controller groups
-    public void set_speed(double right_speed, double left_speed) {
+    public void tankdrive(double right_speed, double left_speed) {
         right.set(right_speed);
         left.set(left_speed);
     }

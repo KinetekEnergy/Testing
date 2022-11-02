@@ -4,25 +4,29 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Drivetrain;
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
-public class Back extends CommandBase {
+public class TankDrive extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-    private final ExampleSubsystem m_subsystem;
+    private final Drivetrain m_drivetrain;
+    private DoubleSupplier left;
+    private DoubleSupplier right;
 
     /**
-     * Creates a new Back.
+     * Creates a new TankDrive.
      *
      * @param subsystem The subsystem used by this command.
      */
-    public Back(ExampleSubsystem subsystem) {
-        m_subsystem = subsystem;
-        // Use addRequirements() here to declare subsystem dependencies.
-        addRequirements(subsystem);
+    public TankDrive(Drivetrain drivetrain, DoubleSupplier left, DoubleSupplier right) {
+        this.m_drivetrain = drivetrain;
+        this.left = left;
+        this.right = right;
+        addRequirements(drivetrain);
     }
-
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
@@ -31,6 +35,7 @@ public class Back extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
+        m_drivetrain.tankdrive(left.getAsDouble(), right.getAsDouble());
     }
 
     // Called once the command ends or is interrupted.
