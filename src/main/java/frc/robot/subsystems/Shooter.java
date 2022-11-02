@@ -10,17 +10,18 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
-  /** Creates a new ExampleSubsystem. */
-  WPI_TalonFX right_motor = new WPI_TalonFX(Constants.right_shooter_motor); // right
-  WPI_TalonFX left_motor = new WPI_TalonFX(Constants.left_shooter_motor); // left
-
+  /** Creates a new ExampleSubsystem. */  
+  private WPI_TalonFX rightMotor = new WPI_TalonFX(Constants.right_shooter_motor); // right
+  private WPI_TalonFX leftMotor = new WPI_TalonFX(Constants.left_shooter_motor); // left
+  
+  private MotorControllerGroup shooter = new MotorControllerGroup(leftMotor, rightMotor);
+  
   public Shooter() {
-    left_motor.setInverted(true);
-    right_motor.setInverted(false);
+    leftMotor.setInverted(true);
+    rightMotor.setInverted(false);
   }
-
-  private MotorControllerGroup shooter = new MotorControllerGroup(left_motor, right_motor);
-
+  
+  
   public void set_speed(double speed) {
     shooter.set(speed);
   }

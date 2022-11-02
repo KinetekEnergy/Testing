@@ -14,17 +14,17 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 /** An example command that uses an example subsystem. */
 public class UpperShoot extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" }) // suppress useless warnings
-    private final Shooter Shooter;
+    private final Shooter shooter;
 
     /**
      * Creates a new UpperShoot.
      *
-     * @param subsystem The subsystem used by this command.
+     * @param upperShoot The subsystem used by this command.
      */
-    public UpperShoot(Shooter subsystem) { // method called uppershoot
-        Shooter = subsystem;
+    public UpperShoot(Shooter upperShoot) { // method called uppershoot
+        shooter = upperShoot;
         // Use addRequirements() here to declare subsystem dependencies.
-        addRequirements(subsystem);
+        addRequirements(upperShoot);
     }
 
     // Called when the command is initially scheduled.
@@ -36,7 +36,7 @@ public class UpperShoot extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        Shooter.set_speed(0.5); // set the speed of the motor
+        shooter.set_speed(0.5); // set the speed of the motor
     }
 
     // Called once the command ends or is interrupted.

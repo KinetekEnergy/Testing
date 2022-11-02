@@ -28,9 +28,9 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   //private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   // private final DriveTrain m_DriveTrain = new DriveTrain();
-  private final Shooter m_Shooter = new Shooter();
+  private final Shooter shooter = new Shooter();
 
-  private final UpperShoot m_upper_shoot = new UpperShoot(m_Shooter); //thingy to activate the shoot
+  private final UpperShoot upperShoot = new UpperShoot(shooter); //thingy to activate the shoot
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -51,9 +51,9 @@ public class RobotContainer {
   private void configureButtonBindings() {
     XboxController controller = new XboxController(0); //create the controller w/the port
 
-    JoystickButton A = new JoystickButton(controller, Button.kA.value); //button map
+    JoystickButton B = new JoystickButton(controller, Button.kB.value); //button mdp
 
-    A.whenPressed(m_upper_shoot); //when A is pressed run the command
+    B.whenPressed(upperShoot); //when A is pressed run the command
     //note: whenPressed() will make the motor start and nothing will stop it unless you manually kill the program
     //use whenHeld() to make the button only activate the motor when it's pressed (HELD down)
   }
@@ -65,6 +65,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_upper_shoot;
+    return upperShoot;
   }
 }
