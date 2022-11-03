@@ -32,6 +32,7 @@ public class RobotContainer {
   private final Shooter shooter = new Shooter();
 
   private final UpperShoot upperShoot = new UpperShoot(shooter); //thingy to activate the shoot
+  private final LowerShoot lowerShoot = new LowerShoot(shooter); // thingy to activate the shoot
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -52,11 +53,16 @@ public class RobotContainer {
   private void configureButtonBindings() {
     XboxController controller = new XboxController(0); //create the controller w/the port
 
-    JoystickButton B = new JoystickButton(controller, Button.kB.value); //button mdp
+    JoystickButton B = new JoystickButton(controller, Button.kB.value); //button map B
+    JoystickButton A = new JoystickButton(controller, Button.kA.value); //button map A
+    
+    B.whenPressed(upperShoot).whenReleased(new LowerShoot(shooter)); //when B is pressed run the command
+    A.whenPressed(lowerShoot).whenReleased(new UpperShoot(shooter)); // when A is pressed run the command
 
-    B.whenPressed(upperShoot).whenReleased(new LowerShoot(shooter)); //when A is pressed run the command
     //note: whenPressed() will make the motor start and nothing will stop it unless you manually kill the program
     //use whenHeld() to make the button only activate the motor when it's pressed (HELD down)
+  
+  
   }
 
   /**

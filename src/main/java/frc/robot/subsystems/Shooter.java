@@ -17,8 +17,8 @@ public class Shooter extends SubsystemBase {
   private MotorControllerGroup shooter = new MotorControllerGroup(leftMotor, rightMotor);
   
   public Shooter() {
-    leftMotor.setInverted(true);
-    rightMotor.setInverted(false);
+    leftMotor.setInverted(false);
+    rightMotor.setInverted(true);
   }
   
   
