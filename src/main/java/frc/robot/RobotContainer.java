@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 //import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
+import frc.robot.commands.LowerShoot;
 //import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.UpperShoot;
 //import frc.robot.subsystems.ExampleSubsystem;
@@ -53,7 +54,7 @@ public class RobotContainer {
 
     JoystickButton B = new JoystickButton(controller, Button.kB.value); //button mdp
 
-    B.whenPressed(upperShoot); //when A is pressed run the command
+    B.whenPressed(upperShoot).whenReleased(new LowerShoot(shooter)); //when A is pressed run the command
     //note: whenPressed() will make the motor start and nothing will stop it unless you manually kill the program
     //use whenHeld() to make the button only activate the motor when it's pressed (HELD down)
   }
