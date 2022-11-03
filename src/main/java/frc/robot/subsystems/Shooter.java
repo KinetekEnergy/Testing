@@ -17,6 +17,8 @@ public class Shooter extends SubsystemBase {
   private MotorControllerGroup shooter = new MotorControllerGroup(leftMotor, rightMotor);
   
   public Shooter() {
+    //inversion of motors
+    //also has to be like this so that it spins the correct way
     leftMotor.setInverted(false);
     rightMotor.setInverted(true);
   }
