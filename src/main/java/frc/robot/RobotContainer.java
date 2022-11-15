@@ -7,14 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 //import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.XboxController.Button;
-import frc.robot.commands.LowerShoot;
-//import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.UpperShoot;
-//import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.TankDrive;
+import frc.robot.subsystems.Drivetrain;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -29,11 +24,8 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   //private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   // private final DriveTrain m_DriveTrain = new DriveTrain();
-  private final Shooter shooter = new Shooter();
-
-  private final UpperShoot upperShoot = new UpperShoot(shooter); //thingy to activate the shoot
-  private final LowerShoot lowerShoot = new LowerShoot(shooter); // thingy to activate the shoot
-
+  private final Drivetrain drivetrain = new Drivetrain();
+  
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -51,18 +43,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    XboxController controller = new XboxController(0); //create the controller w/the port
+    XboxController pilot = new XboxController(0); //create the controller w/the port
 
-    JoystickButton B = new JoystickButton(controller, Button.kB.value); //button map B
-    JoystickButton A = new JoystickButton(controller, Button.kA.value); //button map A
-    
-    B.whenPressed(upperShoot).whenReleased(new LowerShoot(shooter)); //when B is pressed run the command
-    A.whenPressed(lowerShoot).whenReleased(new UpperShoot(shooter)); // when A is pressed run the command
+    //lambda 
 
-    //note: whenPressed() will make the motor start and nothing will stop it unless you manually kill the program
-    //use whenHeld() to make the button only activate the motor when it's pressed (HELD down)
-  
-  
+    // no more m_drivetrain
+    drivetrain.setDefaultCommand(new TankDrive(drivetrain, pilot::getLeftY, pilot::getRightY));
   }
 
   /**
@@ -72,6 +58,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return upperShoot;
+    return null;
   }
 }

@@ -4,39 +4,40 @@
 
 package frc.robot.commands;
 
-//import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.Shooter;
-//import edu.wpi.first.wpilibj.PS4Controller.Button;
+import frc.robot.subsystems.Drivetrain;
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
-//import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
-//import frc.robot.Constants;
 
 /** An example command that uses an example subsystem. */
-public class LowerShoot extends CommandBase {
-    @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" }) // suppress useless error
-    private final Shooter shooter;
+public class TankDrive extends CommandBase {
+    @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
+    private final Drivetrain drivetrain;
+    private DoubleSupplier leftMotor;
+    private DoubleSupplier rightMotor;
+
+    // no more m_drivetrain
 
     /**
-     * Creates a new LowerShoot.
+     * Creates a new TankDrive.
      *
-     * @param lowerShoot The subsystem used by this command.
+     * @param subsystem The subsystem used by this command.
      */
-    public LowerShoot(Shooter lowerShoot) {
-        shooter = lowerShoot;
-        // Use addRequirements() here to declare subsystem dependencies.
-        addRequirements(lowerShoot);
+    public TankDrive(Drivetrain drivetrain, DoubleSupplier left, DoubleSupplier right) {
+        this.drivetrain = drivetrain;
+        this.leftMotor = left;
+        this.rightMotor = right;
+        addRequirements(drivetrain);
     }
-
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        shooter.set_speed(0.2); // set the speed of the motor
+        drivetrain.tankdrive(leftMotor.getAsDouble(), rightMotor.getAsDouble());
     }
 
     // Called once the command ends or is interrupted.
@@ -47,7 +48,6 @@ public class LowerShoot extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        // Shooter.set_speed(0);
         return false;
     }
 }
