@@ -21,4 +21,7 @@ public final class Constants {
     public static final int Left_front = 11;
     public static final int Right_rear = 14;
     public static final int Left_rear = 12;
+
+    public static final int right_shooter_motor = 15;
+    public static final int left_shooter_motor = 16;
 }
